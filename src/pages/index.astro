@@ -31,6 +31,23 @@ import map from "../images/map.png";
             <p class="hero-text">This year in aid of:</p>
             <Image class="charity" src={charity} alt="Zoe's Place - Baby Hospice" />
         </Hero>
+        <div class="intro">
+            <div class="container">
+                <div class="text-area">
+                    <h1>The 24 Hour RPG Event is back!</h1>
+                    <p>Welcome warriors, both keyboard and otherwise!</p>
+                    <p>
+                        This year, 24HR RPG is going for a hybrid event with both virtual and in person sessions. Get ready for a weekend of gruelling endurance and exciting adventures, all in aid of <a
+                            href="https://www.zoes-place.org.uk/">Zoe's Place</a
+                        >. We invite gamers of every flavour to join together and raise money to support of this years chosen charity.
+                    </p>
+                    <p>More details for this years event coming Soon.</p>
+                </div>
+                <div class="image-area">
+                    <Image src={map} alt="fantasy map" />
+                </div>
+            </div>
+        </div>
         <div class="cards">
             <div class="container">
                 <Card title="Game Masters" href="#" bgColour="var(--brand-1)" textColour="var(--white)">
@@ -44,6 +61,7 @@ import map from "../images/map.png";
                     </div>
                     <div slot="body">
                         <p>So, you're interested in being a Game Master for this year's 24 hour challenge?</p>
+                        <p>GM slots currently open. Got a group? Want to run something with them? Great! Let us know what you are playing and who you are bringing</p>
                         <p>
                             You can join as a GM by sending an email via <a href="mailto:contact@24hr-rpg.fyi">contact@24hr-rpg.fyi</a> with the details of your campaign and if you have any players to
                             bring along.
@@ -86,19 +104,11 @@ import map from "../images/map.png";
                     <div slot="body">
                         <p>Interested in being a player for this year's 24 hour challenge?</p>
                         <p>
-                            We will open sign up for the adventures will open 1st Febuary. When they are open you will be able ot find descriptions of this year's adventures and be able to bid for
-                            your place in the adeventure.
+                            We will be opening sign up for the adventures from 1st Febuary 2024. When they are open you will be able ot find descriptions of this year's adventures and be able to bid
+                            for your place in the adeventure.
                         </p>
                     </div>
                 </Card>
-            </div>
-        </div>
-        <div class="intro">
-            <div class="container">
-                <div class="text-area"></div>
-                <div class="image-area">
-                    <Image src={map} alt="fantasy map" />
-                </div>
             </div>
         </div>
     </main>
@@ -112,12 +122,13 @@ import map from "../images/map.png";
     }
     .banner-logo {
         fill: var(--white);
-        width: 400px;
+        max-width: 400px;
+        width: 100%;
         height: auto;
         filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.8));
     }
     .hero-text {
-        font-size: var(--font-size-dog);
+        font-size: var(--font-size-wolf);
         font-weight: 700;
     }
     .icon svg {
@@ -131,6 +142,15 @@ import map from "../images/map.png";
         @include breakpoint(lg) {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    }
+    .intro .container {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        @include breakpoint(lg) {
+            display: grid;
+            grid-template-columns: calc((2 / 3 * 100%) - 16px) calc((1 / 3 * 100%) - 16px);
         }
     }
 </style>
