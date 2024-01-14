@@ -1,0 +1,33 @@
+---
+import SocialMenu from "./SocialMenu.astro";
+---
+
+<footer class="footer">
+    <div class="container">
+        <div class="copyright">
+            <p>© 24HR RPG Roleplaying Games for Charity</p>
+        </div>
+        <SocialMenu class="footer-social" />
+    </div>
+</footer>
+
+<style lang="scss">
+    .footer {
+        background-color: var(--black);
+        color: var(--white);
+    }
+    .footer .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 8px;
+    }
+    .copyright p {
+        font-size: var(--font-size-mouse);
+        margin: 0;
+    }
+    .footer-social {
+        padding-top: 8px;
+        --color: var(--white);
+    }
+</style>
