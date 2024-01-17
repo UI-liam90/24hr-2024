@@ -1,15 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Hero from "../components/Hero.astro";
+import Card from "../components/Card/Card.astro";
+import Hero from "../components/Hero/Hero.astro";
 import { Image } from "astro:assets";
 import charity from "../images/zoes-place-white.png";
 import map from "../images/map.png";
+import TextBlock from "../components/TextBlock";
 ---
 
 <Layout title="Welcome | 24 Hour RPG 2024" description="24 Hour RPG Challenge 2022, this year in of Zoe's Place.">
     <main>
-        <Hero imagePath="/src/images/herobg.jpeg" altText="24 Hour RPG 2024">
+        <Hero imagePath="/src/images/banner.png" altText="24 Hour RPG 2024">
             <svg class="banner-logo" xmlns="http://www.w3.org/2000/svg" width="1009.6" height="265" viewBox="0 0 1009.6 265"
                 ><g transform="translate(0.143)"
                     ><g transform="translate(496.222)"
@@ -31,6 +32,7 @@ import map from "../images/map.png";
             <p class="hero-text">This year in aid of:</p>
             <Image class="charity" src={charity} alt="Zoe's Place - Baby Hospice" />
         </Hero>
+        <TextBlock><p>Testing 123</p></TextBlock>
         <div class="intro">
             <div class="container">
                 <div class="text-area">
@@ -102,7 +104,9 @@ import map from "../images/map.png";
                     </div>
                     <div slot="body">
                         <p>Interested in being a player for this year's 24 hour challenge?</p>
-                        <p>We will be opening sign ups for the adventures from 1st Febuary 2024. When they are open you will be able to find descriptions of this year's adventures and be able to bid for your place in the adeventure of your choice.
+                        <p>
+                            We will be opening sign ups for the adventures from 1st Febuary 2024. When they are open you will be able to find descriptions of this year's adventures and be able to bid
+                            for your place in the adeventure of your choice.
                         </p>
                     </div>
                 </Card>
