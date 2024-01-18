@@ -5,16 +5,25 @@ import Hero from "@components/Hero/Hero.astro";
 import { Image } from "astro:assets";
 import charity from "@images/zoes-place-white.png";
 import map from "@images/map.png";
-import { getHomePage } from "@data/page";
+import { getPage, getPageSlugs } from "@data/page";
 import FlexibleContentPages from "@components/FlexibleContent/flexibleContentPages";
 
-// get homepage data
-const page = await getHomePage();
+// get page data and slugs
+const { slug } = Astro.params;
+let page = await getPage(slug);
+
+export async function getStaticPaths() {
+    let data = await getPageSlugs();
+
+    return data.nodes.map((page) => ({
+        params: { slug: page.slug },
+        props: { page: page },
+    }));
+}
 ---
 
 <Layout title="Welcome | 24 Hour RPG 2024" description="24 Hour RPG Challenge 2022, this year in of Zoe's Place.">
     <main>
-        <h1>TESTING 123</h1>
         <FlexibleContentPages blockData={page.page.pageBuilder.blocks} />
         <Hero imagePath="/src/images/banner.png" altText="24 Hour RPG 2024">
             <svg class="banner-logo" xmlns="http://www.w3.org/2000/svg" width="1009.6" height="265" viewBox="0 0 1009.6 265"

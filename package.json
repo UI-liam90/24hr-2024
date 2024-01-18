@@ -10,14 +10,28 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.7",
+    "@splidejs/react-splide": "^0.7.12",
+    "apollo-upload-client": "^18.0.1",
     "@astrojs/react": "^3.0.9",
+    "classnames": "^2.3.2",
+    "cross-fetch": "^4.0.0",
+    "fslightbox-react": "^1.7.6",
+    "html-react-parser": "^5.0.7",
     "@fontsource-variable/roboto-slab": "^5.0.18",
     "@fontsource/roboto": "^5.0.8",
+    "prop-types": "^15.8.1",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "astro": "^4.1.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-google-recaptcha": "^3.1.0",
+    "react-hook-form": "^7.47.0",
+    "react-intersection-observer": "^9.5.1",
+    "react-svg": "^16.1.17",
+    "uuid": "^9.0.0",
+    "vanilla-cookieconsent": "^3.0.0-rc.17"
   },
   "devDependencies": {
     "sass": "^1.69.7"
