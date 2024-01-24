@@ -36,8 +36,8 @@ const FlexibleContent = ({ blockData, contentType }) => {
                             return <NewsAndTrendsBlock key={v4()} blockData={block} />;
                         case `${contentType}_Pagebuilder_Blocks_MeetTheTeamBlock`:
                             return <MeetTheTeamBlock key={v4()} blockData={block} />;
-                        case `${contentType}_Pagebuilder_Blocks_ContactBlock`:
-                            return <ContactBlock key={v4()} blockData={block} />;
+                        // case `${contentType}_Pagebuilder_Blocks_ContactBlock`:
+                        //     return <ContactBlock key={v4()} blockData={block} />;
                         case `${contentType}_Pagebuilder_Blocks_FaqBlock`:
                             return <FaqBlock key={v4()} blockData={block} />;
                         case `${contentType}_Pagebuilder_Blocks_IconBlock`:

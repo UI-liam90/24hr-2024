@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+//import fetch from "node-fetch";
 import { gravityFormQuery } from "../query";
 export * from "../query";
 
@@ -6,26 +6,26 @@ export * from "../query";
  * Wrapper for the fetchAPI function that gets GraphQL data from Wordpress.
  */
 async function fetchAPI(query, { baseUrl, variables } = {}) {
-  const res = await fetch(baseUrl || process.env.WORDPRESS_API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  });
+    const res = await fetch("https://liamwebwright.co.uk/24hrrpg/graphql", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            query,
+            variables,
+        }),
+    });
 
-  const json = await res.json();
+    const json = await res.json();
 
-  if (json.errors) {
-    console.error(JSON.stringify(json.errors, null, 2));
-    throw new Error("Failed to fetch API");
-  }
-  return json.data;
+    if (json.errors) {
+        console.error(JSON.stringify(json.errors, null, 2));
+        throw new Error("Failed to fetch API");
+    }
+    return json.data;
 }
 
 export async function getGravityForm(id) {
-  const data = await fetchAPI(gravityFormQuery, { variables: { id } });
+    const data = await fetchAPI(gravityFormQuery, { variables: { id } });
 
-  return data;
+    return data;
 }

@@ -10,9 +10,10 @@ import { handleGravityFormsValidationErrors } from "./utils/manageErrors";
 import { submissionHasOneFieldEntry } from "./utils/manageFormData";
 import formatPayload from "./utils/formatPayload";
 import { valueToLowerCase } from "./utils/helpers";
-import { useMutation } from "@apollo/client";
+//import { useMutation } from "@apollo/client";
 import { submitMutationQuery } from "./query";
-
+import client from "../apollo-client";
+import { submitGravityForm } from "./fetch";
 /**
  * Component to take Gravity Form graphQL data and turn into
  * a fully functional form.
@@ -29,7 +30,7 @@ const GravityFormForm = ({ data, presetValues = null, successCallback = () => {}
     const { submitButton, confirmations, databaseId, descriptionPlacement, formFields, labelPlacement, subLabelPlacement } = form;
 
     //Apollo submit form mutation
-    const [submitForm] = useMutation(submitMutationQuery);
+    //const [submitForm] = await client.muation(submitMutationQuery);
 
     const redirect = navigate
         ? (url) => {
@@ -69,37 +70,72 @@ const GravityFormForm = ({ data, presetValues = null, successCallback = () => {}
                     clientData: values,
                 });
                 console.log("formRes", formRes);
-                submitForm({
-                    variables: {
+                try {
+                    const submitRes = await submitGravityForm({
                         id: databaseId,
                         fieldValues: formRes,
-                    },
-                })
-                    .then(({ data: { submitGfForm: errors } }) => {
-                        // Success if no errors returned.
-                        if (!Boolean(errors?.length)) {
-                            setSuccess(true);
-                            setLoading(false);
-                            successCallback({
-                                data: formRes,
-                                reset,
-                            });
-                        } else {
-                            setLoading(false);
-                            handleGravityFormsValidationErrors(errors, setError);
-                            errorCallback({
-                                data: formRes,
-                                error: errors,
-                                reset,
-                            });
-                        }
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                        setLoading(false);
-                        setGeneralError("unknownError");
-                        errorCallback({ data: formRes, error: errors, reset });
                     });
+
+                    if (!Boolean(submitRes?.submitGfForm?.errors?.length)) {
+                        setSuccess(true);
+                        setLoading(false);
+                        successCallback({
+                            data: formRes,
+                            reset,
+                        });
+                    } else {
+                        setLoading(false);
+                        handleGravityFormsValidationErrors(errors, setError);
+                        errorCallback({
+                            data: formRes,
+                            error: errors,
+                            reset,
+                        });
+                    }
+                } catch (error) {
+                    console.log(error);
+                    setGeneralError("unknownError");
+                    setLoading(false);
+                    errorCallback({ data: formRes, error, reset });
+                }
+                // const { data, loading } = await client.mutate({
+                //     query: submitMutationQuery,
+                //     variables: {
+                //         id: databaseId,
+                //         fieldValues: formRes,
+                //     },
+                // });
+                // submitForm({
+                //     variables: {
+                //         id: databaseId,
+                //         fieldValues: formRes,
+                //     },
+                // })
+                //     .then(({ data: { submitGfForm: errors } }) => {
+                //         // Success if no errors returned.
+                //         if (!Boolean(errors?.length)) {
+                //             setSuccess(true);
+                //             setLoading(false);
+                //             successCallback({
+                //                 data: formRes,
+                //                 reset,
+                //             });
+                //         } else {
+                //             setLoading(false);
+                //             handleGravityFormsValidationErrors(errors, setError);
+                //             errorCallback({
+                //                 data: formRes,
+                //                 error: errors,
+                //                 reset,
+                //             });
+                //         }
+                //     })
+                //     .catch((error) => {
+                //         console.log(error);
+                //         setLoading(false);
+                //         setGeneralError("unknownError");
+                //         errorCallback({ data: formRes, error: errors, reset });
+                //     });
             } else {
                 setLoading(false);
                 setGeneralError("leastOneField");

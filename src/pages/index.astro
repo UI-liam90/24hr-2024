@@ -7,6 +7,11 @@ import charity from "@images/zoes-place-white.png";
 import map from "@images/map.png";
 import { getHomePage } from "@data/page";
 import FlexibleContentPages from "@components/FlexibleContent/flexibleContentPages";
+import GravForm from "@components/GravForm/GravForm";
+import GravityFormForm from "@components/helpers/GravFormHelpers";
+import RootElement from "@components/rootElement";
+import Heading from "@components/Heading/Heading";
+import GravityForm from "react-gravity-form";
 
 // get homepage data
 const page = await getHomePage();
@@ -15,7 +20,10 @@ const page = await getHomePage();
 <Layout title="Welcome | 24 Hour RPG 2024" description="24 Hour RPG Challenge 2022, this year in of Zoe's Place.">
     <main>
         <h1>TESTING 123</h1>
-        <FlexibleContentPages blockData={page.page.pageBuilder.blocks} />
+        <!-- <FlexibleContentPages blockData={page.page.pageBuilder.blocks} /> -->
+        <Heading>testing 456</Heading>
+        <GravForm id={1} client:load />
+        <!-- <GravityForm title={false} backendUrl={`https://liamwebwright.co.uk/24hrrpg/ishtar/v1/gf/forms`} formID={1} /> -->
         <Hero imagePath="/src/images/banner.png" altText="24 Hour RPG 2024">
             <svg class="banner-logo" xmlns="http://www.w3.org/2000/svg" width="1009.6" height="265" viewBox="0 0 1009.6 265"
                 ><g transform="translate(0.143)"
@@ -160,3 +168,4 @@ const page = await getHomePage();
         }
     }
 </style>
+@components/Heading/Heading

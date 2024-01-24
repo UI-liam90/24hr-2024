@@ -2,7 +2,7 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 import { useFormContext, Controller } from "react-hook-form";
-import InputWrapper from "../../components/InputWrapper";
+import InputWrapper from "../InputWrapper";
 import strings from "../../utils/strings";
 import { valueToLowerCase } from "../../utils/helpers";
 import DropZone from "./DropZone";

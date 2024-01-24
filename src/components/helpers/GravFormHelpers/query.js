@@ -1,4 +1,6 @@
-import { gql } from "@apollo/client";
+//import { gql } from "@apollo/client";
+import gql from "graphql-tag";
+
 import { captchaFieldFragment } from "./components/Captcha/query";
 import { dateFieldFragment, textFieldFragment, emailFieldFragment, hiddenFieldFragment, numberFieldFragment, phoneFieldFragment } from "./components/Input/query";
 import { htmlFieldFragment } from "./components/Html/query";
