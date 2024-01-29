@@ -1,5 +1,5 @@
 import React from "react";
-import FlexibleContent from "..";
+import FlexibleContent from "../index.astro";
 import { contactBlockFields } from "../ContactBlock/query";
 import { countUpBlockFields } from "../CountUpBlock/query";
 import { faqBlockFields } from "../FaqBlock/query";

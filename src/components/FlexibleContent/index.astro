@@ -1,0 +1,42 @@
+---
+import HeroBlock from "./HeroBlock";
+const { blockData, contentType } = Astro.props;
+---
+
+<div>
+    {
+        blockData &&
+            blockData.map((block, index) => {
+                switch (block.fieldGroupName) {
+                    // case "Page_Pagebuilder_Blocks_GlobalElementBlock":
+                    //     return <GlobalElementBlock key={v4()} blockData={block.elementToClone.pageBuilder.blocks} />;
+                    // case `${contentType}_Pagebuilder_Blocks_TextBlock`:
+                    //     return <TextBlock key={v4()} blockData={block} />;
+                    // case `${contentType}_Pagebuilder_Blocks_TwoColumnTextBlock`:
+                    //     return <TwoColumnTextBlock key={v4()} blockData={block} />;
+                    // case `${contentType}_Pagebuilder_Blocks_TextAndImageGridBlock`:
+                    //     return <ImageAndTextGridBlock key={v4()} blockData={block} />;
+                    // case `${contentType}_Pagebuilder_Blocks_TextAndImageBlock`:
+                    //     return <ImageAndTextBlock key={v4()} blockData={block} />;
+                    // case `${contentType}_Pagebuilder_Blocks_NewsAndTrendsBlock`:
+                    //     return <NewsAndTrendsBlock key={v4()} blockData={block} />;
+                    // case `${contentType}_Pagebuilder_Blocks_MeetTheTeamBlock`:
+                    //     return <MeetTheTeamBlock key={v4()} blockData={block} />;
+                    // case `${contentType}_Pagebuilder_Blocks_ContactBlock`:
+                    //     return <ContactBlock key={v4()} blockData={block} />;
+                    // case `${contentType}_Pagebuilder_Blocks_FaqBlock`:
+                    //     return <FaqBlock key={v4()} blockData={block} />;
+                    // case `${contentType}_Pagebuilder_Blocks_IconBlock`:
+                    //     return <IconBlock key={v4()} blockData={block} />;
+                    // case `${contentType}_Pagebuilder_Blocks_CountUpBlock`:
+                    //     return <CountUpBlock key={v4()} blockData={block} />;
+                    // case `${contentType}_Pagebuilder_Blocks_GalleryBlock`:
+                    //     return <GalleryBlock key={v4()} blockData={block} />;
+                    case `${contentType}_Pagebuilder_Blocks_HeroBanner`:
+                        return <HeroBlock client:load blockData={block} />;
+                    default:
+                        return null;
+                }
+            })
+    }
+</div>
