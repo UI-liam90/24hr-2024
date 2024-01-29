@@ -1,6 +1,6 @@
 import React from "react";
-import parse, { domToReact } from "html-react-parser";
-import { Image } from "astro:assets";
+import parse from "html-react-parser";
+//import { Image } from "astro:assets";
 const options = {
     // replace: (domNode) => {
     //     // Look for an img tag and replace it with Image.

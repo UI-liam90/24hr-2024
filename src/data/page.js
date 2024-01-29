@@ -80,7 +80,6 @@ export async function getHomePage() {
           page(id: "/", idType: URI) {
             ${pageQuery}
           }
-          ${globalFields}
         }
     `,
     };
