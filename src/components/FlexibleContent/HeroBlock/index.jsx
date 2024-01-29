@@ -1,12 +1,11 @@
-"use client";
 import React, { Suspense } from "react";
 import ConditionalWrapper from "@components/helpers/conditionalWrapper";
 
 import "./style.scss";
 
 const ImageHero = React.lazy(() => import("./ImageHero"));
-const VideoHero = React.lazy(() => import("./VideoHero"));
-const SliderHero = React.lazy(() => import("./SliderHero"));
+//const VideoHero = React.lazy(() => import("./VideoHero"));
+//const SliderHero = React.lazy(() => import("./SliderHero"));
 
 const HeroBlock = ({ blockData }) => {
     return (
