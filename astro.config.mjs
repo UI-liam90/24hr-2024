@@ -6,9 +6,9 @@ import netlify from "@astrojs/netlify";
 // https://astro.build/config
 export default defineConfig({
     integrations: [react()],
-    // image: {
-    //     domains: ["liamwebwright.co.uk"],
-    // },
-    output: "hybrid",
-    adapter: netlify(),
+    image: {
+        domains: ["liamwebwright.co.uk"],
+    },
+    // output: "hybrid",
+    // adapter: netlify(),
 });
