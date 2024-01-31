@@ -9,6 +9,7 @@ const pageQuery = `
     title
     date
     excerpt
+
     featuredImage {
         node {
           ${imageFragment}
@@ -19,7 +20,11 @@ const pageQuery = `
         bannerImage {
             ${imageFragment}
         }
-      }
+        adventureTags {
+            title
+            value
+        }
+    }
     seo {
         ${seoFragment}
     }
