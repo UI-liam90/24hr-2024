@@ -4,11 +4,13 @@ import Card from "@components/Card/Card.astro";
 import { Image } from "astro:assets";
 import map from "@images/map.png";
 import { getHomePage } from "@data/page";
+import { getAdventures } from "@data/adventures";
+import { HTMLRender } from "@components/helpers/htmlRender";
 import FlexibleContentPages from "@components/FlexibleContent/flexibleContentPages.astro";
 
 // get homepage data
 const page = await getHomePage();
-console.log(page);
+const adventures = await getAdventures();
 ---
 
 <Layout title="Welcome | 24 Hour RPG 2024" description="24 Hour RPG Challenge 2022, this year in of Zoe's Place.">
@@ -17,18 +19,87 @@ console.log(page);
         <div class="intro">
             <div class="container">
                 <div class="text-area">
-                    <h1>The 24 Hour RPG Event is back!</h1>
+                    <h1 class="heading-2">The 24 Hour RPG Event is back!</h1>
                     <p>Welcome warriors, both keyboard and otherwise!</p>
                     <p>
                         This year, 24HR RPG is going for a hybrid event with both virtual and in person sessions. Get ready for a weekend of gruelling endurance and exciting adventures, all in aid of <a
                             href="https://www.zoes-place.org.uk/">Zoe's Place</a
                         >. We invite gamers of every flavour to join together and raise money to support of this years chosen charity.
                     </p>
-                    <p>More details for this years event coming soon.</p>
+
+                    <p>
+                        We are welcoming individual streamers as well as traditional RPG groups. We encourage those not playing in person to stream their games on the day via Twitch, YouTube, UStream
+                        or any other suitable service [1].
+                    </p>
+
+                    <p>
+                        Every group should also set up a JustGiving page, by clicking the Join Team button at <a href="https://www.justgiving.com/team/24RPG24"
+                            >https://www.justgiving.com/team/24RPG24</a
+                        >, so all donations go to the same place. You will need to create your own JustGiving page first, let one of us know if you get stuck.
+                    </p>
+
+                    <p>
+                        Any players at one of the RPG tables will need to bid real money to gain their seat, with the highest bids taking a place in the game. Those streaming videogames or other
+                        activities are less restricted, but are still very much encouraged raise as much money as they can. GM's and individual streamers don't have to bid (unless they really want
+                        to), but everyone is of course strongly encouraged to get as many sponsors as possible.
+                    </p>
+
+                    <p>
+                        Some games may even allow their sponsor the opportunity to help or hinder their chosen beneficiary through their donations. For every £5 given, a sponsor can inflict a Friend
+                        or a Foe token, to help or hinder their efforts. Maybe it will give them a reroll, or an extra chance. Maybe the monsters get another attack in, or they are forced to stand
+                        still for a bit longer than they should.
+                    </p>
+
+                    <p>
+                        <small>
+                            [1]Individual players/groups don't have to participate in one of the public streams if they are uncomfortable doing so. Using character portraits, or muting from the public
+                            stream is fine, as long as they are still part of the JustGiving team page.
+                        </small>
+                    </p>
+                    <div class="image">
+                        <Image src={map} alt="fantasy map" width={300} />
+                    </div>
+                    <h2 class="heading-3">Modes of Play</h2>
+                    <ul>
+                        <li>Pure Mode - 10am - 10am, full 24 hour endurance events for those up to the challenge.</li>
+                        <li>Flexible Mode - 10am - 10am, A relaxed challenge for the players, with the option to drop in and out at certain campaign points.</li>
+                        <li>Mellow Mode - A relaxed challenge consisting of 12 hours X2, 10am-10pm on both days</li>
+                        <li>Mix Mode - Mainly for videogame streamers, as many hours as you can physically do from 1 to 48 hours depending on the amount of challenge you can manage.</li>
+                    </ul>
                 </div>
-                <div class="image-area">
-                    <Image src={map} alt="fantasy map" />
-                </div>
+            </div>
+        </div>
+        <div class="adventures">
+            <div class="container">
+                <h2 class="heading-3">This Years Adventures</h2>
+                {
+                    adventures.nodes.map((adventure) => (
+                        <div class="adventure">
+                            <Image
+                                src={adventure.featuredImage.node.mediaItemUrl}
+                                width={adventure.featuredImage.node.mediaDetails.width}
+                                height={adventure.featuredImage.node.mediaDetails.height}
+                                alt={adventure.featuredImage.node.altText}
+                            />
+                            {adventure.adventureFields.adventureTags ? (
+                                <ul class="tags">
+                                    {adventure.adventureFields.adventureTags.map((tag) => (
+                                        <li>
+                                            <span>{tag.title}:</span> {tag.value}
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : null}
+                            <h3 class="heading-5">{adventure.title}</h3>
+                            <div class="except">
+                                <HTMLRender data={adventure.excerpt} />
+                            </div>
+                            <a href={`/adventures/${adventure.slug}`} class="button button--secondary">
+                                Read More
+                            </a>
+                        </div>
+                    ))
+                }
             </div>
         </div>
         <div class="cards">
@@ -130,9 +201,54 @@ console.log(page);
         display: flex;
         flex-direction: column;
         gap: 32px;
-        @include breakpoint(lg) {
-            display: grid;
-            grid-template-columns: calc((2 / 3 * 100%) - 16px) calc((1 / 3 * 100%) - 16px);
+        :global(.image) {
+            display: flex;
+            justify-content: center;
+        }
+    }
+    .tags {
+        display: flex;
+        flex-flow: row wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: var(--spacing-2);
+        li {
+            padding: 4px 12px;
+            background-color: var(--lblue);
+            color: var(--black);
+            border-radius: 32px;
+            font-size: var(--font-size-cat);
+            span {
+                font-weight: 700;
+            }
+        }
+    }
+    .adventures {
+        background-color: var(--brand-1);
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            @include breakpoint(lg) {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            }
+            :global(h2) {
+                color: var(--white);
+                grid-column: 1 / -1;
+            }
+        }
+        .adventure {
+            color: var(--white);
+            :global(p) {
+                font-size: var(--font-size-cat);
+            }
+
+            img {
+                object-fit: cover;
+                aspect-ratio: 16 / 9;
+            }
         }
     }
 </style>

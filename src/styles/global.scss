@@ -112,7 +112,9 @@ address {
         }
     }
 }
-
+p small {
+    font-size: var(--font-size-mouse);
+}
 ul,
 ol {
     margin: 0 var(--spacing-6) var(--spacing-6);
