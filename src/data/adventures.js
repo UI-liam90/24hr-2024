@@ -9,7 +9,7 @@ const pageQuery = `
     title
     date
     excerpt
-
+    slug
     featuredImage {
         node {
           ${imageFragment}
@@ -43,6 +43,22 @@ export async function getAdventure(uri) {
     const responseBody = await GQLQuery(query);
 
     return responseBody.adventure;
+}
+export async function getAdventures() {
+    const query = {
+        query: `
+        query GetAdventures {
+          adventures(first: 10) {
+            nodes {
+              ${pageQuery}
+            }
+          }
+        }
+    `,
+    };
+    const responseBody = await GQLQuery(query);
+
+    return responseBody.adventures;
 }
 
 export async function getBids(id, limit = 6, order = "DESC") {
