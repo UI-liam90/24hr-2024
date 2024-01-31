@@ -24,15 +24,20 @@ export async function getStaticPaths() {
 
 <Layout title=`${adventure.title} | 24 Hour RPG 2024` description="24 Hour RPG Challenge 2022, this year in of Zoe's Place.">
     <main>
-        <div class="banner-image">
-            <Image
-                src={adventure.adventureFields.bannerImage.mediaItemUrl}
-                width={adventure.adventureFields.bannerImage.mediaDetails.width}
-                height={adventure.adventureFields.bannerImage.mediaDetails.height}
-                alt={adventure.adventureFields.bannerImage.altText}
-            />
-            <h1>{adventure.title}</h1>
-        </div>
+        {
+            adventure.adventureFields.bannerImage ? (
+                <div class="banner-image">
+                <Image
+                    src={adventure.adventureFields.bannerImage.mediaItemUrl}
+                    width={adventure.adventureFields.bannerImage.mediaDetails.width}
+                    height={adventure.adventureFields.bannerImage.mediaDetails.height}
+                    alt={adventure.adventureFields.bannerImage.altText}
+                />
+                <h1>{adventure.title}</h1>
+            </div>
+            ): null
+        }
+
         {
             adventure.featuredImage ? (
                 <div class="featured-image container">
