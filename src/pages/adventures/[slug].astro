@@ -1,0 +1,129 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { getAdventure, getAdventureSlugs, getBids } from "@data/adventures";
+import FlexibleContentAdventures from "@components/FlexibleContentAdventures/FlexibleContentAdventures.astro";
+import { HTMLRender } from "@components/helpers/htmlRender";
+import GravForm from "@components/GravForm/GravForm";
+import Bids from "@components/Bids"
+
+// get page data and slugs
+const { slug } = Astro.params;
+let adventure = await getAdventure(slug);
+let bids = await getBids(adventure.databaseId, adventure.adventureFields.maxPlayers);
+
+export async function getStaticPaths() {
+    let data = await getAdventureSlugs();
+
+    return data.nodes.map((page) => ({
+        params: { slug: page.slug },
+        props: { page: page },
+    }));
+}
+---
+
+<Layout title=`${adventure.title} | 24 Hour RPG 2024` description="24 Hour RPG Challenge 2022, this year in of Zoe's Place.">
+    <main>
+        <div class="banner-image">
+            <Image
+                src={adventure.adventureFields.bannerImage.mediaItemUrl}
+                width={adventure.adventureFields.bannerImage.mediaDetails.width}
+                height={adventure.adventureFields.bannerImage.mediaDetails.height}
+                alt={adventure.adventureFields.bannerImage.altText}
+            />
+            <h1>{adventure.title}</h1>
+        </div>
+        {
+            adventure.featuredImage ? (
+                <div class="featured-image container">
+                    <div class="featured-image__image">
+                        <Image
+                            src={adventure.featuredImage.node.mediaItemUrl}
+                            width={adventure.featuredImage.node.mediaDetails.width}
+                            height={adventure.featuredImage.node.mediaDetails.height}
+                            alt={adventure.featuredImage.node.altText}
+                        />
+                    </div>
+                </div>
+            ) : null
+        }
+
+        <div class="adventure-content-area container">
+            <div class="description">
+                <HTMLRender data={adventure.content} />
+            </div>
+            <div class="form">
+                <h2 class="heading-5">Current Players ({bids.nodes.length} / {adventure.adventureFields.maxPlayers})</h2>
+                <Bids client:load adventure={adventure} />
+                <h2 class="heading-3">Want to get Involved?</h2>
+
+                <p>You can fill out this form with you bid for if you want to join this campaign. Clicking the magical send button prompts a kobold to fetch the form and bring it to one of our team. Or you can email <a href="mailto:join@24hr-rpg.fyi">join@24hr-rpg.fyi</a></p>
+
+                <p>If you're just looking to donate and do not want to join this campaign, please go to our <a href="https://www.justgiving.com/team/24RPG24">JustGiving page</a> to donate.</p>
+                <GravForm client:load id={"1"} presetValues={{ input_7: `${adventure.databaseId.toString()}` }} />
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style lang="scss">
+    @use "@styles/abstracts/breakpoint" as *;
+    .banner-image {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-content: center;
+        img {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1920 / 400;
+        }
+        h1 {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+            color: var(--white);
+            text-align: center;
+        }
+    }
+    .featured-image {
+        margin: -100px auto 20px;
+        padding-block: 0;
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16 / 7;
+            border-radius: 32px;
+        }
+    }
+    .adventure-content-area {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-10);
+        @include breakpoint(md) {
+            display: grid;
+            gap: var(--spacing-10);
+            grid-template-columns: 1fr 300px;
+        }
+        @include breakpoint(lg) {
+            grid-template-columns: 1fr 450px;
+        }
+    }
+    .form {
+        background-color: var(--lblue);
+        padding: var(--spacing-8);
+        :global(#gform_submit_button_1) {
+            background-color: var(--brand-2);
+            &:hover {
+                background-color: var(--brand-1);
+                color: var(--white);
+            }
+        }
+        :global(#field_1_6 label.gravityform__label) {
+            display: none;
+        }
+    }
+</style>

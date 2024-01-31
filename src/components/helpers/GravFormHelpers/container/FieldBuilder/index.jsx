@@ -61,7 +61,7 @@ const FieldBuilder = ({ databaseId, formFields, formLoading, preOnSubmit, preset
         //TODO: Should this match GF version "input_form.id_input.id"
         const inputName = `input_${field.id}`;
 
-        const defaultValue = field?.defaultValue || "";
+        const defaultValue = presetValues?.[inputName] || field?.defaultValue || "";
 
         switch (field.type) {
             // Add note for unsupported captcha field
