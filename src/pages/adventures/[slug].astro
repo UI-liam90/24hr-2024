@@ -55,11 +55,14 @@ export async function getStaticPaths() {
 
         <div class="adventure-content-area container">
             <div class="description">
-                <ul class="tags">
+                {adventure.adventureFields.adventureTags ? (
+                    <ul class="tags">
                     {adventure.adventureFields.adventureTags.map((tag) => (
                         <li><span>{tag.title}:</span> {tag.value}</li>
                     ))}
                 </ul>
+                ) : null}
+
                 <HTMLRender data={adventure.content} />
             </div>
             <div class="form">
