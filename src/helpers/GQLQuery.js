@@ -1,5 +1,5 @@
 export default async function GQLQuery({ query }) {
-    const res = await fetch(import.meta.env.WORDPRESS_API_URL, {
+    const res = await fetch(import.meta.env.PUBLIC_WORDPRESS_API_URL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
