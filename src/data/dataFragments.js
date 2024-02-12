@@ -14,6 +14,7 @@ title
 path
 parentId
 cssClasses
+target
 `;
 export const seoFragment = `
 metaDesc

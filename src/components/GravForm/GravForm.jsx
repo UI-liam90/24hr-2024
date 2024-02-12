@@ -1,7 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { getGravityForm } from "@components/helpers/GravFormHelpers/server";
 import GravityFormForm from "@components/helpers/GravFormHelpers";
+
+import { ApolloClient, InMemoryCache } from "@apollo/client/core/core.cjs";
+import { ApolloProvider } from "@apollo/client/react";
+import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
+const client = new ApolloClient({
+    link: createUploadLink({
+        uri: `${import.meta.env.PUBLIC_WORDPRESS_API_URL}`,
+    }),
+    cache: new InMemoryCache(),
+});
 
 const GravForm = ({ id, presetValues }) => {
     const [success, setSuccess] = useState(null);
@@ -25,9 +35,9 @@ const GravForm = ({ id, presetValues }) => {
         return <p>Form Loading...</p>;
     }
     return (
-        <>
+        <ApolloProvider client={client}>
             <GravityFormForm data={success} presetValues={presetValues} />
-        </>
+        </ApolloProvider>
     );
 };
 export default GravForm;

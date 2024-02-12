@@ -12,9 +12,10 @@ ul.menu {
         top: 100%;
         left: -999em;
         z-index: var(--layer-important);
-        background-color: var(--white);
+        background-color: var(--brand-1);
         list-style: none;
         padding-bottom: var(--spacing-4);
+        width: 250px;
         li {
             margin-left: var(--spacing-3);
             margin-right: var(--spacing-3);
@@ -24,6 +25,9 @@ ul.menu {
             top: 0;
             left: -999em;
         }
+    }
+    .button {
+        margin-top: 0;
     }
 }
 
@@ -50,6 +54,8 @@ ul.menu li {
         align-items: center;
         position: relative;
         .dropdown-arrow {
+            position: absolute;
+            right: 0;
             svg {
                 width: 12px;
                 fill: var(--black);
@@ -60,15 +66,15 @@ ul.menu li {
 ul.menu a {
     display: block;
     text-decoration: none;
-    color: var(--white);
-    font-family: var(--font-heading);
-    font-size: var(--font-size-wolf);
-    font-weight: 600;
+    color: var(--black);
+    font-family: var(--font-body);
+    font-size: var(--font-size-cat);
+    font-weight: 700;
     padding: var(--spacing-3) var(--spacing-5);
-    text-transform: uppercase;
+
     &:active,
     &:visited {
-        color: var(--white);
+        color: var(--black);
     }
     &:hover,
     &:focus {
@@ -76,10 +82,10 @@ ul.menu a {
     }
 }
 ul.sub-menu a {
-    color: var(--black);
+    color: var(--white);
     &:active,
     &:visited {
-        color: var(--black);
+        color: var(--white);
     }
 }
 
