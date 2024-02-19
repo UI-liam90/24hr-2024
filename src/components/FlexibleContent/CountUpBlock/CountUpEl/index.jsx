@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import { HTMLRender } from "@components/helpers/htmlRender";
+import { HTMLRender } from "~components/helpers/htmlRender";
 
 const CountUpEl = ({ countData }) => {
     const [countActive, setCountActive] = useState(null);

@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { HTMLRender } from "@components/helpers/htmlRender";
+import { HTMLRender } from "~components/helpers/htmlRender";
 import { v4 } from "uuid";
 import FsLightbox from "fslightbox-react";
 import { InView } from "react-intersection-observer";
-import { WpImage } from "@components/helpers/WpImage";
+import { WpImage } from "~components/helpers/WpImage";
 
 import "./style.scss";
 

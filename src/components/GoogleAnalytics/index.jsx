@@ -1,6 +1,3 @@
-"use client";
-
-import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { pageview } from "./gtagHelper";
@@ -16,8 +13,8 @@ export default function GoogleAnalytics({ measurementId }) {
     }, [pathname, searchParams, measurementId]);
     return (
         <>
-            <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />
-            <Script id="google-analytics" strategy="afterInteractive">
+            <script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />
+            <script id="google-analytics" strategy="afterInteractive">
                 {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
@@ -32,7 +29,7 @@ export default function GoogleAnalytics({ measurementId }) {
                     page_path: window.location.pathname,
                 });
                 `}
-            </Script>
+            </script>
         </>
     );
 }

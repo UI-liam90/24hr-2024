@@ -2,9 +2,9 @@
 import React, { useRef } from "react";
 import { InView } from "react-intersection-observer";
 import { v4 } from "uuid";
-import { HTMLRender } from "@components/helpers/htmlRender";
-import LinkButton from "@components/LinkButton";
-import { WpImage } from "@components/helpers/WpImage";
+import { HTMLRender } from "~components/helpers/htmlRender";
+import LinkButton from "~components/LinkButton";
+import { WpImage } from "~components/helpers/WpImage";
 // Import Splide React components
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";

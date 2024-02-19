@@ -1,0 +1,29 @@
+@use "~styles/abstracts/breakpoint" as *;
+.off-canvas-button {
+    --size: 75px;
+    --shadow-strength: 25%;
+    --shadow-color: 220 40% 2%;
+    // position: fixed;
+    // z-index: var(--layer-important);
+    // bottom: var(--spacing-2);
+    // right: var(--spacing-2);
+    margin-left: var(--spacing-2);
+    background-color: var(--brand-1);
+    color: var(--white);
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    filter: drop-shadow(0 25px 25px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 0.15%)));
+    svg {
+        width: 30px;
+        fill: var(--white);
+    }
+    h5 {
+        font-size: var(--font-size-mouse);
+        margin: 0;
+    }
+}

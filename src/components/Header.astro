@@ -1,5 +1,10 @@
 ---
 import SocialMenu from "./SocialMenu.astro";
+import Menu from "./Menu";
+import OffCanvasFlyoutToggle from "~components/OffCanvas/OffCanvasFlyoutToggle";
+import { getMenu } from "~data/menu";
+
+const menu = await getMenu();
 ---
 
 <header>
@@ -25,13 +30,19 @@ import SocialMenu from "./SocialMenu.astro";
                 ></a
             >
         </div>
+        <div class="desktop-menu">
+            <Menu className="menu" menuData={menu.menuItems} />
+        </div>
 
-        <a class="button button--secondary" href="https://www.justgiving.com/team/24RPG24" target="_BLANK">Donate</a>
         <SocialMenu />
+        <div class="mobile-menu">
+            <OffCanvasFlyoutToggle client:load />
+        </div>
     </div>
 </header>
 
 <style lang="scss">
+    @use "../styles/abstracts/breakpoint" as *;
     .header-container {
         display: flex;
         justify-content: flex-start;
@@ -48,6 +59,20 @@ import SocialMenu from "./SocialMenu.astro";
             width: 100%;
             height: auto;
             fill: var(--black);
+        }
+    }
+    .desktop-menu {
+        display: none;
+    }
+    .mobile-menu {
+        display: block;
+    }
+    @include breakpoint(md) {
+        .desktop-menu {
+            display: block;
+        }
+        .mobile-menu {
+            display: none;
         }
     }
 </style>

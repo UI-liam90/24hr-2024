@@ -1,4 +1,4 @@
-@use "@styles/abstracts/breakpoint" as *;
+@use "~styles/abstracts/breakpoint" as *;
 ul.menu {
     display: flex;
     justify-content: flex-end;
@@ -12,9 +12,10 @@ ul.menu {
         top: 100%;
         left: -999em;
         z-index: var(--layer-important);
-        background-color: var(--white);
+        background-color: var(--brand-1);
         list-style: none;
         padding-bottom: var(--spacing-4);
+        width: 250px;
         li {
             margin-left: var(--spacing-3);
             margin-right: var(--spacing-3);
@@ -24,6 +25,9 @@ ul.menu {
             top: 0;
             left: -999em;
         }
+    }
+    .button {
+        margin-top: 0;
     }
 }
 
@@ -49,37 +53,44 @@ ul.menu li {
         display: flex;
         align-items: center;
         position: relative;
+        padding-right: var(--spacing-3);
+        > a {
+            padding-right: 0;
+        }
         .dropdown-arrow {
+            padding-top: var(--spacing-1);
+            padding-left: var(--spacing-2);
             svg {
+                padding-top: 2px;
                 width: 12px;
                 fill: var(--black);
             }
         }
     }
 }
-ul.menu a {
+ul.menu a:not(.button) {
     display: block;
     text-decoration: none;
-    color: var(--white);
-    font-family: var(--font-heading);
-    font-size: var(--font-size-wolf);
-    font-weight: 600;
-    padding: var(--spacing-3) var(--spacing-5);
-    text-transform: uppercase;
+    color: var(--black);
+    font-family: var(--font-body);
+    font-size: var(--font-size-cat);
+    font-weight: 700;
+    padding: var(--spacing-3) var(--spacing-3);
+
     &:active,
     &:visited {
-        color: var(--white);
+        color: var(--black);
     }
     &:hover,
     &:focus {
         text-decoration: underline;
     }
 }
-ul.sub-menu a {
-    color: var(--black);
+ul.sub-menu a:not(.button) {
+    color: var(--white);
     &:active,
     &:visited {
-        color: var(--black);
+        color: var(--white);
     }
 }
 
