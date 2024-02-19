@@ -1,10 +1,11 @@
+import { isNavOpen } from "~components/OffCanvas/offCanvasStore";
 const MenuItem = ({ item }) => {
     const internal = /^\/(?!\/)/.test(item.path);
     if (internal) {
         return (
             <>
                 {item.path.includes("#") ? (
-                    <a className={`anchor-link ${item.cssClasses.join(" ")}`} href={item.path} target={item.target}>
+                    <a className={`anchor-link ${item.cssClasses.join(" ")}`} href={item.path} target={item.target} onClick={() => isNavOpen.set(false)}>
                         {item.label}
                     </a>
                 ) : (
