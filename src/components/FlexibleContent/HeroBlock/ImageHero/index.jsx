@@ -1,9 +1,9 @@
 //"use client";
 //import React from "react";
 import { InView } from "react-intersection-observer";
-//import { WpImage } from "@components/helpers/WpImage";
-import { HTMLRender } from "@components/helpers/htmlRender";
-import LinkButton from "@components/LinkButton";
+//import { WpImage } from "~components/helpers/WpImage";
+import { HTMLRender } from "~components/helpers/htmlRender";
+import LinkButton from "~components/LinkButton";
 
 const ImageHero = ({ blockData }) => {
     const file = blockData.image;

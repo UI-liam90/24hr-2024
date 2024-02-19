@@ -1,4 +1,4 @@
-import GQLQuery from "@helpers/GQLQuery";
+import GQLQuery from "~helpers/GQLQuery";
 import { menuFragment } from "./dataFragments";
 
 export async function getMenu(location = "MAIN_NAV") {

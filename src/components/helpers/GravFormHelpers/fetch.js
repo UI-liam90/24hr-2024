@@ -1,5 +1,5 @@
 import { submitMutationQuery } from "./query";
-import GQLQuery from "@helpers/GQLQuery";
+import GQLQuery from "~helpers/GQLQuery";
 
 /**
  * Wrapper for the fetchAPI function that gets GraphQL data from Wordpress.

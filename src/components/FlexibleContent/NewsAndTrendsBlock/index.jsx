@@ -2,10 +2,10 @@
 import React from "react";
 import { v4 } from "uuid";
 import { InView } from "react-intersection-observer";
-import NewsGridItemBlock from "@components/NewsGridItemBlock";
-import HTag from "@components/helpers/hTag";
-import LinkButton from "@components/LinkButton";
-import { HTMLRender } from "@components/helpers/htmlRender";
+import NewsGridItemBlock from "~components/NewsGridItemBlock";
+import HTag from "~components/helpers/hTag";
+import LinkButton from "~components/LinkButton";
+import { HTMLRender } from "~components/helpers/htmlRender";
 import "./style.scss";
 
 const NewsAndTrendsBlock = ({ blockData }) => {

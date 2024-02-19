@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { WpImage } from "@components/helpers/WpImage";
+import { WpImage } from "~components/helpers/WpImage";
 import { useInView } from "react-intersection-observer";
-import HTag from "@components/helpers/hTag";
+import HTag from "~components/helpers/hTag";
 
 import "./style.scss";
 

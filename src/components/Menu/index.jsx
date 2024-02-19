@@ -1,5 +1,5 @@
 import { useState } from "react";
-import menuBuilder from "@helpers/menuHelper";
+import menuBuilder from "~helpers/menuHelper";
 import MenuItem from "./MenuItem";
 
 import "./style.scss";
@@ -18,7 +18,7 @@ const Menu = ({ menuData, className, setOffcanvasState }) => {
     const [menuStatus, setMenuStatus] = useState(initialMenuStatus);
 
     return (
-        <ul className={`menu ${className}`}>
+        <ul className={`${className}`}>
             {menuItems.map((item) => {
                 return (
                     <li className={`menu-item ${item.children && item.children.length > 0 ? "menu-item--has-children" : ""}  menu-item--${menuStatus[item.id] ? "open" : "closed"}`} key={item.id}>

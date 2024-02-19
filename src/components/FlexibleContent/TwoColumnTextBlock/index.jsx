@@ -1,4 +1,4 @@
-import { HTMLRender } from "@components/helpers/htmlRender";
+import { HTMLRender } from "~components/helpers/htmlRender";
 
 import "./style.scss";
 

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { HTMLRender } from "@components/helpers/htmlRender";
+import { HTMLRender } from "~components/helpers/htmlRender";
 import { InView } from "react-intersection-observer";
 
 const FaqEl = ({ faqData }) => {

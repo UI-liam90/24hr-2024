@@ -1,4 +1,4 @@
-@use "@styles/abstracts/breakpoint" as *;
+@use "~styles/abstracts/breakpoint" as *;
 .image-grid-block {
     padding: var(--spacing-20) 0;
     @include breakpoint(lg) {

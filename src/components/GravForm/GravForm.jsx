@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { getGravityForm } from "@components/helpers/GravFormHelpers/server";
-import GravityFormForm from "@components/helpers/GravFormHelpers";
+import { getGravityForm } from "~components/helpers/GravFormHelpers/server";
+import GravityFormForm from "~components/helpers/GravFormHelpers";
 
 import { ApolloClient, InMemoryCache } from "@apollo/client/core/core.cjs";
 import { ApolloProvider } from "@apollo/client/react";

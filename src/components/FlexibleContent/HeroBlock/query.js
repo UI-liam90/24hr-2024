@@ -1,4 +1,4 @@
-import { imageFragment } from "@data/dataFragments";
+import { imageFragment } from "~data/dataFragments";
 export const heroBlockFields = /* GraphQL */ `
 autoplay
 fullWidth

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { HTMLRender } from "@components/helpers/htmlRender";
-import GravForm from "@components/GravForm/GravForm";
+import { HTMLRender } from "~components/helpers/htmlRender";
+import GravForm from "~components/GravForm/GravForm";
 import "./style.scss";
 
 //const GravityForm = React.lazy(() => import("react-gravity-form"));

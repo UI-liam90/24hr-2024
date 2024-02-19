@@ -1,4 +1,4 @@
-@use "@styles/abstracts/breakpoint" as *;
+@use "~styles/abstracts/breakpoint" as *;
 ul.menu {
     display: flex;
     justify-content: flex-end;
@@ -53,24 +53,29 @@ ul.menu li {
         display: flex;
         align-items: center;
         position: relative;
+        padding-right: var(--spacing-3);
+        > a {
+            padding-right: 0;
+        }
         .dropdown-arrow {
-            position: absolute;
-            right: 0;
+            padding-top: var(--spacing-1);
+            padding-left: var(--spacing-2);
             svg {
+                padding-top: 2px;
                 width: 12px;
                 fill: var(--black);
             }
         }
     }
 }
-ul.menu a {
+ul.menu a:not(.button) {
     display: block;
     text-decoration: none;
     color: var(--black);
     font-family: var(--font-body);
     font-size: var(--font-size-cat);
     font-weight: 700;
-    padding: var(--spacing-3) var(--spacing-5);
+    padding: var(--spacing-3) var(--spacing-3);
 
     &:active,
     &:visited {
@@ -81,7 +86,7 @@ ul.menu a {
         text-decoration: underline;
     }
 }
-ul.sub-menu a {
+ul.sub-menu a:not(.button) {
     color: var(--white);
     &:active,
     &:visited {

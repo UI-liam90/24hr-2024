@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { InView } from "react-intersection-observer";
-import { WpImage } from "@components/helpers/WpImage";
-import { HTMLRender } from "@components/helpers/htmlRender";
+import { WpImage } from "~components/helpers/WpImage";
+import { HTMLRender } from "~components/helpers/htmlRender";
 
 const IconEl = ({ iconData }) => {
     return (

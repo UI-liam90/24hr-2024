@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { InView } from "react-intersection-observer";
-import { HTMLRender } from "@components/helpers/htmlRender";
-import LinkButton from "@components/LinkButton";
+import { HTMLRender } from "~components/helpers/htmlRender";
+import LinkButton from "~components/LinkButton";
 
 const VideoHero = ({ blockData }) => {
     return (
