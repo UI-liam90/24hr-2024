@@ -1,5 +1,5 @@
 import React from "react";
-import { WpImage } from "@components/helpers/WpImage";
+import { WpImage } from "~components/helpers/WpImage";
 import { useInView } from "react-intersection-observer";
 
 const GridImageBlock = ({ imageData }) => {

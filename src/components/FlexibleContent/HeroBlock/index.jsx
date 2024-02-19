@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import ConditionalWrapper from "@components/helpers/conditionalWrapper";
+import ConditionalWrapper from "~components/helpers/conditionalWrapper";
 
 import "./style.scss";
 

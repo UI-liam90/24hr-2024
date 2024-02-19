@@ -1,11 +1,11 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import Layout from "~layouts/Layout.astro";
 import { Image } from "astro:assets";
-import { getAdventure, getAdventureSlugs, getBids } from "@data/adventures";
-import FlexibleContentAdventures from "@components/FlexibleContentAdventures/FlexibleContentAdventures.astro";
-import { HTMLRender } from "@components/helpers/htmlRender";
-import GravForm from "@components/GravForm/GravForm";
-import Bids from "@components/Bids"
+import { getAdventure, getAdventureSlugs, getBids } from "~data/adventures";
+import FlexibleContentAdventures from "~components/FlexibleContentAdventures/FlexibleContentAdventures.astro";
+import { HTMLRender } from "~components/helpers/htmlRender";
+import GravForm from "~components/GravForm/GravForm";
+import Bids from "~components/Bids";
 
 // get page data and slugs
 const { slug } = Astro.params;
@@ -27,15 +27,17 @@ export async function getStaticPaths() {
         {
             adventure.adventureFields.bannerImage ? (
                 <div class="banner-image">
-                <Image
-                    src={adventure.adventureFields.bannerImage.mediaItemUrl}
-                    width={adventure.adventureFields.bannerImage.mediaDetails.width}
-                    height={adventure.adventureFields.bannerImage.mediaDetails.height}
-                    alt={adventure.adventureFields.bannerImage.altText}
-                />
-                <div class="container"><h1 class="heading-3">{adventure.title}</h1></div>
-            </div>
-            ): null
+                    <Image
+                        src={adventure.adventureFields.bannerImage.mediaItemUrl}
+                        width={adventure.adventureFields.bannerImage.mediaDetails.width}
+                        height={adventure.adventureFields.bannerImage.mediaDetails.height}
+                        alt={adventure.adventureFields.bannerImage.altText}
+                    />
+                    <div class="container">
+                        <h1 class="heading-3">{adventure.title}</h1>
+                    </div>
+                </div>
+            ) : null
         }
 
         {
@@ -55,13 +57,17 @@ export async function getStaticPaths() {
 
         <div class="adventure-content-area container">
             <div class="description">
-                {adventure.adventureFields.adventureTags ? (
-                    <ul class="tags">
-                    {adventure.adventureFields.adventureTags.map((tag) => (
-                        <li><span>{tag.title}:</span> {tag.value}</li>
-                    ))}
-                </ul>
-                ) : null}
+                {
+                    adventure.adventureFields.adventureTags ? (
+                        <ul class="tags">
+                            {adventure.adventureFields.adventureTags.map((tag) => (
+                                <li>
+                                    <span>{tag.title}:</span> {tag.value}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : null
+                }
 
                 <HTMLRender data={adventure.content} />
             </div>
@@ -70,7 +76,10 @@ export async function getStaticPaths() {
                 <Bids client:load adventure={adventure} />
                 <h2 class="heading-3">Want to get Involved?</h2>
 
-                <p>You can fill out this form with you bid for if you want to join this campaign. Clicking the magical send button prompts a kobold to fetch the form and bring it to one of our team. Or you can email <a href="mailto:join@24hr-rpg.fyi">join@24hr-rpg.fyi</a></p>
+                <p>
+                    You can fill out this form with you bid for if you want to join this campaign. Clicking the magical send button prompts a kobold to fetch the form and bring it to one of our team.
+                    Or you can email <a href="mailto:join@24hr-rpg.fyi">join@24hr-rpg.fyi</a>
+                </p>
 
                 <p>If you're just looking to donate and do not want to join this campaign, please go to our <a href="https://www.justgiving.com/team/24RPG24">JustGiving page</a> to donate.</p>
                 <GravForm client:load id={"1"} presetValues={{ input_7: `${adventure.databaseId.toString()}` }} />
@@ -80,7 +89,7 @@ export async function getStaticPaths() {
 </Layout>
 
 <style lang="scss">
-    @use "@styles/abstracts/breakpoint" as *;
+    @use "~styles/abstracts/breakpoint" as *;
     .banner-image {
         display: grid;
         grid-template-columns: 1fr;
@@ -119,19 +128,17 @@ export async function getStaticPaths() {
         padding: 0;
         gap: var(--spacing-2);
         li {
-           padding: 4px 12px;
-           background-color: var(--plum);
-           color: var(--white);
-           border-radius: 32px;
-           font-size: var(--font-size-cat);
+            padding: 4px 12px;
+            background-color: var(--plum);
+            color: var(--white);
+            border-radius: 32px;
+            font-size: var(--font-size-cat);
             span {
                 font-weight: 700;
             }
         }
     }
     .featured-image {
-
-
         img {
             object-fit: cover;
             width: 100%;

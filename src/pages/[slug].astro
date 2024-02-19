@@ -1,12 +1,12 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Card from "@components/Card/Card.astro";
-import Hero from "@components/Hero/Hero.astro";
+import Layout from "~layouts/Layout.astro";
+import Card from "~components/Card/Card.astro";
+import Hero from "~components/Hero/Hero.astro";
 import { Image } from "astro:assets";
-import charity from "@images/zoes-place-white.png";
-import map from "@images/map.png";
-import { getPage, getPageSlugs } from "@data/page";
-import FlexibleContentPages from "@components/FlexibleContent/flexibleContentPages.astro";
+import charity from "~images/zoes-place-white.png";
+import map from "~images/map.png";
+import { getPage, getPageSlugs } from "~data/page";
+import FlexibleContentPages from "~components/FlexibleContent/flexibleContentPages.astro";
 
 // get page data and slugs
 const { slug } = Astro.params;

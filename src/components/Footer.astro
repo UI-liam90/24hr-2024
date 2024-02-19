@@ -1,5 +1,6 @@
 ---
 import SocialMenu from "./SocialMenu.astro";
+import OffCanvasFlyout from "./OffCanvas/OffCanvasFlyout";
 ---
 
 <footer class="footer">
@@ -10,7 +11,7 @@ import SocialMenu from "./SocialMenu.astro";
         <SocialMenu class="footer-social" />
     </div>
 </footer>
-
+<OffCanvasFlyout client:load />
 <style lang="scss">
     .footer {
         background-color: var(--black);

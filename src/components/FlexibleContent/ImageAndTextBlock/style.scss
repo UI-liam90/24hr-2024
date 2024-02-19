@@ -1,4 +1,4 @@
-@use "@styles/abstracts/breakpoint" as *;
+@use "~styles/abstracts/breakpoint" as *;
 .text-image-block {
     padding: var(--spacing-20) 0;
     @include breakpoint(lg) {

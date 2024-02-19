@@ -1,4 +1,4 @@
-@use "@styles/abstracts/breakpoint" as *;
+@use "~styles/abstracts/breakpoint" as *;
 .video-hero video {
     display: block;
     font-size: 0;
@@ -43,6 +43,7 @@
     svg {
         fill: var(--white);
         max-width: 400px;
+        width: 100%;
         height: auto;
     }
     p {

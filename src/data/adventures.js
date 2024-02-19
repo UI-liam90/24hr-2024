@@ -1,6 +1,6 @@
 import { imageFragment, seoFragment } from "./dataFragments";
-import { heroBlockFields } from "@components/FlexibleContent/HeroBlock/query";
-import GQLQuery from "@helpers/GQLQuery";
+import { heroBlockFields } from "~components/FlexibleContent/HeroBlock/query";
+import GQLQuery from "~helpers/GQLQuery";
 
 const pageQuery = `
     id

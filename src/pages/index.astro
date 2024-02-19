@@ -1,12 +1,12 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Card from "@components/Card/Card.astro";
+import Layout from "~layouts/Layout.astro";
+import Card from "~components/Card/Card.astro";
 import { Image } from "astro:assets";
-import map from "@images/map.png";
-import { getHomePage } from "@data/page";
-import { getAdventures } from "@data/adventures";
-import { HTMLRender } from "@components/helpers/htmlRender";
-import FlexibleContentPages from "@components/FlexibleContent/flexibleContentPages.astro";
+import map from "~images/map.png";
+import { getHomePage } from "~data/page";
+import { getAdventures } from "~data/adventures";
+import { HTMLRender } from "~components/helpers/htmlRender";
+import FlexibleContentPages from "~components/FlexibleContent/flexibleContentPages.astro";
 
 // get homepage data
 const page = await getHomePage();
@@ -70,7 +70,7 @@ const adventures = await getAdventures();
                 </div>
             </div>
         </div>
-        <div class="adventures">
+        <div id="adventures" class="adventures">
             <div class="container">
                 <h2 class="heading-3">This Years Adventures</h2>
                 {

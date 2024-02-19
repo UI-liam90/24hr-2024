@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getBids } from "@data/adventures";
+import { getBids } from "~data/adventures";
 
 const Bids = ({ adventure }) => {
     const [bids, setBids] = useState(null);

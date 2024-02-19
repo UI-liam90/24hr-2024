@@ -1,11 +1,7 @@
-"use client";
-
-import Script from "next/script";
-
 export default function GoogleTagManager({ measurementId }) {
     return (
         <>
-            <Script type="text/plain" data-category="analytics" data-service="Google Tag Manager" id="google-tagmanager" strategy="afterInteractive">
+            <script type="text/plain" data-category="analytics" data-service="Google Tag Manager" id="google-tagmanager" strategy="afterInteractive">
                 {`
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -13,7 +9,7 @@ export default function GoogleTagManager({ measurementId }) {
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','${measurementId}');
         `}
-            </Script>
+            </script>
         </>
     );
 }

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import menuBuilder from "@/helpers/menuHelper";
+import { useState } from "react";
+import menuBuilder from "~helpers/menuHelper";
 import MenuItem from "./MenuItem";
 
 import "./style.scss";
